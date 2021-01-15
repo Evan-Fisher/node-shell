@@ -8,4 +8,4 @@ ls();
 
 const cat = require('./cat');
 
-// cat('./bash.js');
+cat();
