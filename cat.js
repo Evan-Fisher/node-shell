@@ -5,7 +5,6 @@ module.exports = function () {
     const cmd = data.toString().split(' ');
     if (cmd[0].toString() === 'cat') {
       let fileN = cmd[1].toString().substring(0, cmd[1].length - 1);
-      console.log(fileN);
       fs.readFile(`${fileN}`, 'utf8', function (err, data) {
         if (err) {
           return console.log(err);
@@ -15,6 +14,3 @@ module.exports = function () {
     }
   });
 };
-
-// ${process.cwd()}/${fileName}
-// ${fileName}
