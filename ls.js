@@ -1,29 +1,14 @@
 const fs = require('fs');
 
-// module.exports = function (data) {
-//   const cmd = data.toString().trim();
-//   if (cmd === 'ls') {
-//     fs.readdir('./', 'utf8', (err, files) => {
-//       if (err) {
-//         throw err;
-//       } else {
-//         process.stdout.write(files.join('\n'));
-//         process.stdout.write(`\nprompt > `);
-//       }
-//     });
-//   }
-// };
-
-module.exports = function () {
+module.exports = function (done) {
   process.stdin.on('data', (data) => {
     const cmd = data.toString().trim();
     if (cmd === 'ls') {
       fs.readdir('./', 'utf8', (err, files) => {
         if (err) {
-          throw err;
+          done('Something went wrong!');
         } else {
-          process.stdout.write(`\n${files.join('\n')}`);
-          process.stdout.write(`\nprompt > `);
+          done(`\n${files.join('\n')}\n`);
         }
       });
     }
